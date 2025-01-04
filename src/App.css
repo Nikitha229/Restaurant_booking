@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("istockphoto-1297364206-612x612.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps background static on scroll */
+  color: white; /* Default text color for readability */
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent navbar */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f9a825;
+}
+
+h1, h2, p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Improves readability */
+}
+
+.container {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent container for content */
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+}
+
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+form {
+  margin: 20px auto;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+form input, form button {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.booking-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 400px;
+  text-align: left;
+}
