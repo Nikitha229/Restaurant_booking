@@ -2,12 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-// Express app
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
 mongoose
   .connect("mongodb://127.0.0.1:27017/restaurantBooking", {
     useNewUrlParser: true,
@@ -16,7 +14,6 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Schema
 const bookingSchema = new mongoose.Schema({
   name: String,
   contact: String,
@@ -28,15 +25,12 @@ const bookingSchema = new mongoose.Schema({
 
 const Booking = mongoose.model("Booking", bookingSchema);
 
-// Create a booking
 app.post("/create-booking", async (req, res) => {
   const { name, contact, date, time, guests } = req.body;
 
   try {
-    // Find all bookings for the same date and time
     const existingBookings = await Booking.find({ date, time });
 
-    // Check if any table is available
     const bookedTables = existingBookings.map((booking) => booking.tableNumber);
     let availableTable = null;
 
@@ -51,7 +45,6 @@ app.post("/create-booking", async (req, res) => {
       return res.status(400).json({ message: "No tables available at this time." });
     }
 
-    // Create new booking
     const newBooking = new Booking({
       name,
       contact,
@@ -69,7 +62,6 @@ app.post("/create-booking", async (req, res) => {
   }
 });
 
-// Get bookings
 app.get("/get-bookings", async (req, res) => {
   const { date } = req.query; // Get the date from query params
   if (!date) {
